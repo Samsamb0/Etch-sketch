@@ -17,4 +17,28 @@ function initialisation() {
     board.innerHTML += square;
     document.querySelectorAll(".hover")[i].style.backgroundColor = "blue";
   }*/
+  /*buttons black*/
+  let black = document.getElementById("black");
+  black.addEventListener("click", hoverB);
+  /*buttons rgb*/
+  let rgb = document.getElementById("rgb");
+  rgb.addEventListener("click", hoverRgb);
+}
+function hoverB() {
+  let hover = document.getElementsByClassName("hover");
+  for (let i = 0; i < hover.length; i++) {
+    hover[i].addEventListener("mouseover", function () {
+      hover[i].style.backgroundColor = "black";
+    });
+  }
+}
+
+function hoverRgb() {
+  let hover = document.getElementsByClassName("hover");
+  for (let i = 0; i < hover.length; i++) {
+    hover[i].addEventListener("mouseover", function () {
+      hover[i].style.backgroundColor =
+        "#" + Math.floor(Math.random() * 16777215).toString(16);
+    });
+  }
 }
