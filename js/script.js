@@ -23,6 +23,10 @@ function initialisation() {
   /*buttons rgb*/
   let rgb = document.getElementById("rgb");
   rgb.addEventListener("click", hoverRgb);
+
+  /*pickColor*/
+  let choiceColor = document.querySelector("input");
+  choiceColor.addEventListener("change", pickColor);
 }
 function hoverB() {
   let hover = document.getElementsByClassName("hover");
@@ -39,6 +43,16 @@ function hoverRgb() {
     hover[i].addEventListener("mouseover", function () {
       hover[i].style.backgroundColor =
         "#" + Math.floor(Math.random() * 16777215).toString(16);
+    });
+  }
+}
+
+function pickColor() {
+  let hover = document.getElementsByClassName("hover");
+  let color = document.querySelector("input").value;
+  for (let i = 0; i < hover.length; i++) {
+    hover[i].addEventListener("mouseover", function () {
+      hover[i].style.backgroundColor = color;
     });
   }
 }
