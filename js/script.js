@@ -27,6 +27,12 @@ function initialisation() {
   /*pickColor*/
   let choiceColor = document.querySelector("input");
   choiceColor.addEventListener("change", pickColor);
+  /*reset*/
+  let reset = document.getElementById("reset");
+  reset.addEventListener("click", resetB);
+  /*size*/
+  let sizeBtn = document.getElementById("sSize");
+  sizeBtn.addEventListener("click", changeSize);
 }
 function hoverB() {
   let hover = document.getElementsByClassName("hover");
@@ -55,4 +61,42 @@ function pickColor() {
       hover[i].style.backgroundColor = color;
     });
   }
+}
+
+function resetB() {
+  let hover = document.querySelectorAll(".hover");
+  for (let square of hover) {
+    square.style.backgroundColor = "blue";
+  }
+}
+
+function changeSize() {
+  let size = document.getElementById("size").value;
+  let board = document.querySelector("#grid-container");
+  if (size <= 100) {
+    board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+    let existingSquares = document.querySelectorAll(".hover");
+    for (let i = 0; i < existingSquares.length; i++) {
+      existingSquares[i].remove();
+    }
+
+    for (let i = 0; i < size * size; i++) {
+      let square = document.createElement("div");
+      square.style.backgroundColor = "blue";
+      square.className = "hover";
+      board.appendChild(square);
+    }
+  } else {
+    funAlert();
+  }
+}
+function funAlert() {
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: "Takes only number under or equal to 100!",
+    footer: '<a href="">Why do I have this issue?</a>',
+  });
 }
