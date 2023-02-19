@@ -51,14 +51,14 @@ input:hover {
 }
 
 /*header*/
-
+#grid-container {
+}
 /*MAIN*/
 footer {
-  text-align: center;
+  border: 3px whitesmoke solid;
+  margin-top: 6%;
 }
 footer p {
-  border: 3px antiquewhite solid;
-  width: 100%;
   padding: 20px;
 }
 /*FOOTER*/
